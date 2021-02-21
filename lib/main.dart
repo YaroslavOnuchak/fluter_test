@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-void main() => runApp(new MyApp());
+void main() => {runApp(new MyApp())};
 
 class MyApp extends StatelessWidget {
   @override
@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
         body: Container(
           alignment: Alignment.center,
           child: CustomTile(),
-          // height: double.infinity,
         ),
       ),
     );
@@ -27,10 +26,10 @@ class CustomTile extends StatefulWidget {
 class CustomTileState extends State<CustomTile> {
   Color color;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    super.initState();
+  }
 
   int random() {
     var rng = new Random();
