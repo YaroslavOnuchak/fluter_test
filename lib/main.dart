@@ -23,17 +23,39 @@ class CustomTile extends StatefulWidget {
   CustomTileState createState() => CustomTileState();
 }
 
+class RandomColorRGBO {
+  int randomR() {
+    var r = new Random();
+    return r.nextInt(255);
+  }
+
+  int randomG() {
+    var g = new Random();
+    return g.nextInt(255);
+  }
+
+  int randomB() {
+    var b = new Random();
+    return b.nextInt(255);
+  }
+
+  double randomO() {
+    var o = new Random();
+    return o.nextDouble();
+  }
+}
+
 class CustomTileState extends State<CustomTile> {
   Color color;
+
+  var r = RandomColorRGBO();
+  var g = RandomColorRGBO();
+  var b = RandomColorRGBO();
+  var o = RandomColorRGBO();
 
   @override
   void initState() {
     super.initState();
-  }
-
-  int random() {
-    var rng = new Random();
-    return rng.nextInt(255);
   }
 
   @override
@@ -49,7 +71,8 @@ class CustomTileState extends State<CustomTile> {
         ),
         onTap: () {
           setState(() {
-            color = Color.fromRGBO(random(), random(), random(), 1);
+            color = Color.fromRGBO(
+                r.randomR(), g.randomR(), b.randomR(), o.randomO());
           });
         },
       ),
