@@ -25,22 +25,22 @@ class CustomTile extends StatefulWidget {
 
 class RandomColorRGBO {
   int randomR() {
-    var r = new Random();
+    final r = new Random();
     return r.nextInt(255);
   }
 
   int randomG() {
-    var g = new Random();
+    final g = new Random();
     return g.nextInt(255);
   }
 
   int randomB() {
-    var b = new Random();
+    final b = new Random();
     return b.nextInt(255);
   }
 
   double randomO() {
-    var o = new Random();
+    final o = new Random();
     return o.nextDouble();
   }
 }
@@ -48,10 +48,10 @@ class RandomColorRGBO {
 class CustomTileState extends State<CustomTile> {
   Color color;
 
-  var r = RandomColorRGBO();
-  var g = RandomColorRGBO();
-  var b = RandomColorRGBO();
-  var o = RandomColorRGBO();
+  final r = RandomColorRGBO();
+  final g = RandomColorRGBO();
+  final b = RandomColorRGBO();
+  final o = RandomColorRGBO();
 
   @override
   void initState() {
@@ -60,21 +60,23 @@ class CustomTileState extends State<CustomTile> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: color,
-      child: ListTile(
-        title: Center(
-          child: Text(
-            'Hey there',
-            style: Theme.of(context).textTheme.headline4,
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          color = Color.fromRGBO(
+              r.randomR(), g.randomR(), b.randomR(), o.randomO());
+        });
+      },
+      child: Container(
+        color: color,
+        child: ListTile(
+          title: Center(
+            child: Text(
+              'Hey there',
+              style: Theme.of(context).textTheme.headline4,
+            ),
           ),
         ),
-        onTap: () {
-          setState(() {
-            color = Color.fromRGBO(
-                r.randomR(), g.randomR(), b.randomR(), o.randomO());
-          });
-        },
       ),
     );
   }
